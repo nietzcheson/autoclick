@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="col-md-4">
+    <form class="" action="" method="post">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">{{ form_label(form.entrega)}}</label>
+            {{ form_widget(form.entrega)}}
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="">{{ form_label(form.fechaEntrega)}}</label>
+              {{ form_widget(form.fechaEntrega)}}
+            </div>
+            <div class="col-md-6">
+              <label for="">{{ form_label(form.horaEntrega)}}</label>
+              {{ form_widget(form.horaEntrega)}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">{{ form_label(form.devolucion)}}</label>
+              {{ form_widget(form.devolucion)}}
+            </div>
+            <div class="form-group">
+              <div class="col-md-6">
+                <label for="">{{ form_label(form.fechaDevolucion)}}</label>
+                {{ form_widget(form.fechaDevolucion)}}
+              </div>
+              <div class="col-md-6">
+                <label for="">{{ form_label(form.horaDevolucion)}}</label>
+                {{ form_widget(form.horaDevolucion)}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      {{ form_widget(form) }}
+    </form>
+  </div>
+{% endblock %}

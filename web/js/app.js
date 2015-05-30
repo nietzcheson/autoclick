@@ -1,3 +1,5 @@
 $(document).on('ready', function(){
-  //alert('Listo');
+  $('.datepicker').datepicker({
+    startDate: '-3d'
+  });
 });

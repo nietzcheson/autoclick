@@ -2,7 +2,121 @@
 
 {% block content %}
 
+<div class="col-md-4">
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#step1" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+          <span>1</span> <small>Su Itinerario</small>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#step2" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
+          <span>2</span> <small>Su Auto</small>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#step3" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
+          <span>3</span> <small>Su Reserva</small>
+        </a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content wrap-tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="step1" aria-labelledby="home-tab">
 
-Acá
+          <div class="col-md-6">
+            <h4 class="azul-autoClick">Lugar y Fecha de Entrega:</h4>
+            <p class="lead">
+              Aeropuerto Mayorca, España
+              <br>
+              <small>Domingo 01 de agosto, de 2014 - 10 a.m.</small>
+            </p>
+          </div>
+
+          <div class="col-md-6">
+            <h4 class="azul-autoClick">Lugar y Fecha de Devolución:</h4>
+            <p class="lead">
+              Aeropuerto Mayorca, España
+              <br>
+              <small>Domingo 01 de agosto, de 2014 - 10 a.m.</small>
+            </p>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-default btn-auto-click">Modificar itinerario</button>
+
+          </div>
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="step2" aria-labelledby="profile-tab">
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="step3" aria-labelledby="profile-tab">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <div class="page-header">
+      <h3 class="azul-autoClick">Seleccione su Auto <br />
+      <small>Categoría de autos</small></h3>
+    </div>
+
+    <ul id="listTab" class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#todas" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Todas</a></li>
+      <li role="presentation"><a href="#economico" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Económico</a></li>
+      <li role="presentation"><a href="#compacto" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Compacto</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="todas" aria-labelledby="home-tab">
+
+        <ul class="list-autos">
+
+          {% for i in 0..10 %}
+          <li>
+            <div class="list-autos-img">
+              <img src="{{ asset('img/smart.png') }}" alt="" />
+            </div>
+            <div class="list-autos-info">
+              <p>
+                <h4>
+                  Smart ForTwo
+                  <br />
+                  <small><span class="azul-autoClick">Económico</span> (MXMR)</small>
+                </h4>
+              </p>
+              <p>
+                <span class="glyphicon glyphicon-user"><small>2</small></span>
+                <span class="glyphicon glyphicon-picture"><small>2</small></span>
+                <span class="glyphicon glyphicon-lock"><small>1</small></span>
+                <span class="glyphicon glyphicon-certificate"><small></small></span>
+              </p>
+              <p>
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6 ">
+                  <small>Desde:</small>
+                  <h4 class="azul-autoClick">$30</h4>
+                  <button type="button" name="button" class="btn btn-default btn-auto-click">Reservar</button>
+                </div>
+              </p>
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="economico" aria-labelledby="profile-tab">
+        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="compacto" aria-labelledby="profile-tab">
+        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+      </div>
+    </div>
+
+</div>
+
 
 {% endblock %}

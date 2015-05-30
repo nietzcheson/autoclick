@@ -103,7 +103,14 @@ $app->match('/', function (Request $request) use ($app) {
 
     return $app['twig']->render('checkIn.twig', array('form' => $form->createView()));
 })
-->bind('homepage')
+->bind('checking')
+;
+
+$app->match('/checkout', function (Request $request) use ($app) {
+
+    return $app['twig']->render('checkOut.twig');
+})
+->bind('checkout')
 ;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {

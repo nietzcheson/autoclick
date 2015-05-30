@@ -3,8 +3,12 @@
   list-style: none;
 }
 
+.azul-autoClick{
+  color: #2ab6df;
+}
+
 body {
-    background-image: url('../img/background.jpg');
+    /*background-image: url('../img/background.jpg');*/
 }
 
 .col-row{
@@ -132,7 +136,7 @@ body {
   background: #25b9e7;
 }
 
-.form-foot button{
+.btn-auto-click{
   background: #29add7;
   color: white;
 }
@@ -145,7 +149,8 @@ body {
 
 .nav-foot{
   width: 100%;
-  position: absolute;
+  float: left;
+  position: relative;
   background: #19a3d1;
   bottom: 0px;
 }
@@ -185,9 +190,86 @@ body {
   color: white;
 }
 
+#myTab.nav-tabs{
+  background: #8dd8ee!important;
+}
+
+#myTab.nav-tabs>li.active>a,
+#myTab.nav-tabs>li.active>a:focus,
+#myTab.nav-tabs>li.active>a:hover {
+  background: #58c5e6!important;
+  border: 0px;
+  color: #24829f;
+}
+
+#myTab.nav-tabs>li > a span,
+#myTab.nav-tabs>li > a span:focus,
+#myTab.nav-tabs>li > a span:hover {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#myTab.nav .nav-tabs li a span{
+  color: white;
+}
+
+.list-autos{
+  width: 100%;
+  float: left;
+  position: relative;
+  padding: 10px;
+}
+
+  .list-autos li{
+    width: 100%;
+    float: left;
+    position: relative;
+  }
+
+    .list-autos li div{
+      width: 50%;
+      float: left;
+      position: relative;
+      padding: 10px;
+    }
+
+    .list-autos li div img{
+      width: 100%;
+      float: left;
+    }
+
+
+.wrap-tab-content{
+  width: 100%;
+  float: left;
+  position: relative;
+  padding: 20px;
+  background:#eee;
+  height: auto;
+}
+
 @media screen and (max-width: 990px) {
   .ribbon{
     width: 40%;
+  }
+
+  .nav-foot{
+    width: 100%;
+    float: left;
+    position: relative;
+    background: #19a3d1;
+    bottom: 0px;
+  }
+
+  ul#listTab nav{
+    background: red!important;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  .list-autos li{
+    width: 50%;
   }
 }
 
@@ -199,6 +281,7 @@ body {
   .ribbon{
     width: 80%;
   }
+
 
 
       .img-foot{

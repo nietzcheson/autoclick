@@ -28,9 +28,8 @@ $app->get('/', function (Request $request) use ($app) {
     }else{
       $hora[$i] = $i.':00';
     }
-
-
   }
+
 
   $form = $app['form.factory']->createBuilder('form')
       ->add('entrega', 'choice', array(
@@ -47,7 +46,8 @@ $app->get('/', function (Request $request) use ($app) {
           'attr' => array(
             'class' => 'form-control datepicker'
           ),
-          'label' => 'Entrega:'
+          'label' => 'Entrega:',
+          'data' => date_format(new \Datetime('now'), 'd/m/Y')
       ))
       ->add('horaEntrega', 'choice', array(
           'choices' => array($hora),
@@ -72,7 +72,8 @@ $app->get('/', function (Request $request) use ($app) {
           'attr' => array(
             'class' => 'form-control datepicker'
           ),
-          'label' => 'Devolución:'
+          'label' => 'Devolución:',
+          'data' => date_format(new \Datetime('now'), 'd/m/Y')
       ))
       ->add('horaDevolucion', 'choice', array(
           'choices' => array($hora),

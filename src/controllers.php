@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 
-$app->get('/', function (Request $request) use ($app) {
+$app->match('/', function (Request $request) use ($app) {
 
   $oficinas = array(
     'Acapulco - Aeropuerto',
@@ -96,7 +96,8 @@ $app->get('/', function (Request $request) use ($app) {
           // do something with the data
 
           // redirect somewhere
-          return $app->redirect('...');
+          exit();
+          return $app['twig']->render('checkOut.twig', array('form' => $form->createView()));
       }
   }
 

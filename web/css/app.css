@@ -21,6 +21,7 @@ body {
   height: 100%;
   position: absolute;
   background-image: url('../img/background.jpg');
+  z-index: -1003;
 }
 
 .navbar-brand img{
@@ -293,7 +294,7 @@ body {
   .ribbon{
     width: 80%;
   }
-  
+
   .img-foot{
     width: 30%;
   }

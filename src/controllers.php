@@ -5,33 +5,45 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use GuzzleHttp\Client;
 //Request::setTrustedProxies(array('127.0.0.1'));
-
-
-
 
 $app->match('/', function (Request $request) use ($app) {
 
-  $oficinas = array(
-    'Acapulco - Aeropuerto',
-    'Aguascalientes - Aeropuerto',
-    'Aguascalientes Centro'
-  );
 
-  $hora = array();
 
-  for($i = 0; $i < 24; $i++){
+    // $uri = 'http://www.vedeviaje.com/examen/rest/index.php';
+    // $cliente = new Client(['base_uri' => $uri]);
+    // $res = $cliente->post('/login', ['LogIn' => ['0123456789', '0123456789']]);
+    //
+    // echo $res->getBody();
+    // exit();
 
-    if($i < 10){
-      $hora[$i] = '0'.$i.':00';
-    }else{
-      $hora[$i] = $i.':00';
+    // $uri = 'http://www.vedeviaje.com/examen/rest/index.php';
+    // $cliente = new Client(['base_uri' => $uri]);
+    // $res = $cliente->post($uri, ['LogIn' => ['0123456789', '0123456789']]);
+    //
+    // echo $res->getBody();
+    // exit();
+
+    $oficinas = array(
+      'Acapulco - Aeropuerto',
+      'Aguascalientes - Aeropuerto',
+      'Aguascalientes Centro'
+    );
+
+    $hora = array();
+
+    for($i = 0; $i < 24; $i++){
+
+      if($i < 10){
+        $hora[$i] = '0'.$i.':00';
+      }else{
+        $hora[$i] = $i.':00';
+      }
     }
-  }
 
-
-  $form = $app['form.factory']->createBuilder('form')
+    $form = $app['form.factory']->createBuilder('form')
       ->add('entrega', 'choice', array(
           'choices' => array($oficinas),
           //'expanded' => true,
@@ -87,19 +99,19 @@ $app->match('/', function (Request $request) use ($app) {
       ))
       ->getForm();
 
-  if ('POST' == $request->getMethod()) {
-      $form->bind($request);
-
-      if ($form->isValid()) {
-          $data = $form->getData();
-
-          // do something with the data
-
-          // redirect somewhere
-          exit();
-          return $app['twig']->render('checkOut.twig', array('form' => $form->createView()));
-      }
-  }
+    if ('POST' == $request->getMethod()) {
+        $form->bind($request);
+        return $app->redirect($app['url_generator']->generate('checkout'));
+        // if ($form->isValid()) {
+        //     $data = $form->getData();
+        //
+        //     // do something with the data
+        //
+        //     // redirect somewhere
+        //     exit();
+        //     return $app['twig']->render('checkOut.twig', array('form' => $form->createView()));
+        // }
+    }
 
     return $app['twig']->render('checkIn.twig', array('form' => $form->createView()));
 })

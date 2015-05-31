@@ -7,10 +7,7 @@ use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\FormServiceProvider;
-
 use Symfony\Component\Validator\Constraints as Assert;
-
-
 
 $app = new Application();
 $app->register(new Silex\Provider\ValidatorServiceProvider());

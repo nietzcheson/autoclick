@@ -8,11 +8,19 @@
 }
 
 body {
-    /*background-image: url('../img/background.jpg');*/
+  background: #dedede;
 }
 
 .col-row{
-  top: 15px;
+  min-height: 550px;
+  top: 70px;
+}
+
+.img-back{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url('../img/background.jpg');
 }
 
 .navbar-brand img{
@@ -106,8 +114,6 @@ body {
 .form-list-g li:nth-child(2){
   border-radius: 3px;
 }
-
-
 
 .form-g{
   width: 100%;
@@ -225,6 +231,8 @@ body {
     width: 100%;
     float: left;
     position: relative;
+    border-bottom: 2px solid #aaa;
+    background: #ededed;
   }
 
     .list-autos li div{
@@ -278,19 +286,21 @@ body {
       background-image: url();
   }
 
+  .img-back{
+    background: #ffffff;
+  }
+
   .ribbon{
     width: 80%;
   }
-
-
-
-      .img-foot{
-        width: 30%;
-      }
-        .img-foot img{
-          margin-top: 20px;
-        }
-      .p-foot{
-        width: 70%;
-      }
+  
+  .img-foot{
+    width: 30%;
+  }
+    .img-foot img{
+      margin-top: 20px;
+    }
+  .p-foot{
+    width: 70%;
+  }
 }

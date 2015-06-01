@@ -8,29 +8,53 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use GuzzleHttp\Client;
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-$app->match('/', function (Request $request) use ($app) {
+$uri = 'http://www.vedeviaje.com/examen/rest/index.php';
 
+$sessionID = function() use($app){
 
-
-    // $uri = 'http://www.vedeviaje.com/examen/rest/index.php';
-    // $cliente = new Client(['base_uri' => $uri]);
-    // $res = $cliente->post('/login', ['LogIn' => ['0123456789', '0123456789']]);
-    //
-    // echo $res->getBody();
-    // exit();
-
-    // $uri = 'http://www.vedeviaje.com/examen/rest/index.php';
-    // $cliente = new Client(['base_uri' => $uri]);
-    // $res = $cliente->post($uri, ['LogIn' => ['0123456789', '0123456789']]);
-    //
-    // echo $res->getBody();
-    // exit();
-
-    $oficinas = array(
-      'Acapulco - Aeropuerto',
-      'Aguascalientes - Aeropuerto',
-      'Aguascalientes Centro'
+    $raw = array(
+        'Function' => 'LogIn',
+        'ContractId' => '0123456789',
+        'Password' => '0123456789',
+        'Language' => 'ES'
     );
+
+    $client = new GuzzleHttp\Client();
+    $res = $client->post($app["uri"], ['json' =>  $raw]);
+
+    $data = json_decode($res->getBody());
+
+    return $data->SessionId;
+};
+
+$sessionID = $sessionID();
+
+$oficinas = function () use($app, $sessionID){
+    $raw = array(
+        'Function' => 'GetStationList',
+        'SessionId' => $sessionID,
+        'StationType' => 'CheckIn',
+    );
+
+    $client = new GuzzleHttp\Client();
+    $res = $client->post($app['uri'], ['json' =>  $raw]);
+
+    $res = json_decode($res->getBody());
+
+    $oficinas = array();
+
+    foreach($res as $data){
+      $oficinas[$data->StationId] = $data->StationName;
+    }
+
+    return $oficinas;
+
+};
+
+$oficinas = $oficinas();
+
+$app->match('/', function (Request $request) use ($app, $oficinas) {
+
 
     $hora = array();
 
@@ -77,7 +101,8 @@ $app->match('/', function (Request $request) use ($app) {
           'attr' => array(
             'class' => 'form-control selectpicker'
           ),
-          'label' => 'Oficina Devolución:'
+          'label' => 'Oficina Devolución:',
+          'empty_value' => 'Seleccione'
       ))
       ->add('fechaDevolucion', 'text', array(
           //'expanded' => true,

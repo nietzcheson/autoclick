@@ -17,6 +17,7 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.messages' => array(),
 ));
 date_default_timezone_set('Mexico/General');
+$app["uri"] = 'http://www.vedeviaje.com/examen/rest/index.php';
 $app->register(new RoutingServiceProvider());
 $app->register(new ValidatorServiceProvider());
 $app->register(new ServiceControllerServiceProvider());
